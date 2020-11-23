@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+	<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/yz/yzadmin/logs/storekeeper/storekeeper.log</file>
+		<encoder>
+			<pattern>[%date][%level][%logger %line][%thread]dstTraceId:[%X{logMdc}] call [%logger{0}][%method] %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>/yz/yzadmin/logs/storekeeper/storekeeper-%d{yyyy-MM-dd}.log.%i</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="RollingFile_Async" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold>0</discardingThreshold>
+		<queueSize>100000</queueSize>
+		<includeCallerData>true</includeCallerData>
+		<appender-ref ref="RollingFile" />
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%date][%level][%logger %line][%thread]dstTraceId:[%X{logMdc}] call [%logger{0}][%method] %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+	
+	<appender name="CatAppender" class="com.dianping.cat.logback.CatLogbackAppender"></appender>
+
+	<!-- <logger level="INFO" additivity="false" name="com.fosun.storekeeper">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="com.alibaba.dubbo">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="DEBUG" additivity="false" name="com.ibatis">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="DEBUG" additivity="false" name="org.mybatis">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.springframework">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="DEBUG" additivity="false" name="java.sql">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.apache">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="com.alibaba.dubbo">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.I0Itec">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.dozer">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.jdbcdslog">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="jdbc.sqltiming">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="jdbc.sqlonly">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="jdbc.resultsettable">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="jdbc.resultset">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="jdbc.connection">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="jdbc.audit">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate.type.descriptor.sql.BasicBinder">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate.type.descriptor.sql.BasicExtractor">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate.SQL">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate.type">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate.engine.QueryParameters">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate.engine.query.HQLQueryPlan">
+		<appender-ref ref="RollingFile_Async" />
+	</logger>
+	<logger level="INFO" additivity="false" name="org.hibernate">
+		<appender-ref ref="RollingFile_Async" />
+	</logger> -->
+
+	<root level="INFO">
+		<appender-ref ref="RollingFile_Async" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="CatAppender" />
+	</root>
+
+</configuration>

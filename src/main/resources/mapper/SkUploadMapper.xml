@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fosun.storekeeper.mapper.SkUploadMapper" > 
+
+	<resultMap id="BaseResultMap" type="com.fosun.storekeeper.entity.SkUpload" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="doc_type" property="docType" jdbcType="VARCHAR" />
+		<result column="origin_name" property="originName" jdbcType="VARCHAR" />
+		<result column="encode_name" property="encodeName" jdbcType="VARCHAR" />
+		<result column="sys_name" property="sysName" jdbcType="VARCHAR" />
+		<result column="file_group" property="fileGroup" jdbcType="VARCHAR" />
+		<result column="file_path" property="filePath" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="flag" property="flag" jdbcType="CHAR" />
+		<result column="version" property="version" jdbcType="VARCHAR" />
+		<result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+		<result column="created_dt" property="createdDt" jdbcType="TIMESTAMP" />
+		<result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+		<result column="updated_dt" property="updatedDt" jdbcType="TIMESTAMP" />
+  	</resultMap>
+  	
+  	<sql id="Base_Column_List" >
+  		id, 
+		code, 
+		doc_type, 
+		origin_name, 
+		encode_name, 
+		sys_name, 
+		file_group, 
+		file_path, 
+		description, 
+		memo, 
+		flag, 
+		version, 
+		created_by, 
+		created_dt, 
+		updated_by, 
+		updated_dt
+  	</sql>
+  	
+  	<insert id="insert" parameterType="com.fosun.storekeeper.entity.SkUpload" >
+  		insert into sk_upload
+		(
+			<include refid="Base_Column_List" />
+		)
+		values
+		(
+  			#{id,jdbcType=INTEGER}, 
+			#{code,jdbcType=VARCHAR}, 
+			#{docType,jdbcType=VARCHAR}, 
+			#{originName,jdbcType=VARCHAR}, 
+			#{encodeName,jdbcType=VARCHAR}, 
+			#{sysName,jdbcType=VARCHAR}, 
+			#{fileGroup,jdbcType=VARCHAR}, 
+			#{filePath,jdbcType=VARCHAR}, 
+			#{description,jdbcType=VARCHAR}, 
+			#{memo,jdbcType=VARCHAR}, 
+			#{flag,jdbcType=CHAR}, 
+			#{version,jdbcType=VARCHAR}, 
+			#{createdBy,jdbcType=VARCHAR}, 
+			#{createdDt,jdbcType=TIMESTAMP}, 
+			#{updatedBy,jdbcType=VARCHAR}, 
+			#{updatedDt,jdbcType=TIMESTAMP}
+		)
+  	</insert>
+  	
+  	<delete id="deleteByPrimaryKey" >
+    	delete 
+    	from sk_upload
+    	where 
+  		id = #{id,jdbcType=INTEGER} 
+		
+  	</delete>
+  	
+  	<select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+    	select 
+    	<include refid="Base_Column_List" />
+    	from sk_upload
+    	where 
+    	id = #{id,jdbcType=INTEGER} 
+		
+  	</select>
+  	
+  	<select id="selectBySkUpload" parameterType="com.fosun.storekeeper.entity.SkUpload" resultMap="BaseResultMap" >
+    	select 
+    	<include refid="Base_Column_List" />
+    	from sk_upload
+    	<where>
+    		1=1
+ 			<if test="encodeName != null">
+				and encode_name = #{encodeName,jdbcType=VARCHAR}
+			</if>
+		    <if test="flag != null">
+				and flag = #{flag,jdbcType=VARCHAR}
+			</if>
+		</where>  
+		
+  	</select>
+  	
+  	<update id="updateByPrimaryKey" parameterType="com.fosun.storekeeper.entity.SkUpload" >
+    	update sk_upload
+    	<set>
+	    	<if test="code != null">
+				code = #{code,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="docType != null">
+				doc_type = #{docType,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="originName != null">
+				origin_name = #{originName,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="encodeName != null">
+				encode_name = #{encodeName,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="sysName != null">
+				sys_name = #{sysName,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="fileGroup != null">
+				file_group = #{fileGroup,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="filePath != null">
+				file_path = #{filePath,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="description != null">
+				description = #{description,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="flag != null">
+				flag = #{flag,jdbcType=CHAR}, 
+			</if>
+	    	<if test="version != null">
+				version = #{version,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="createdBy != null">
+				created_by = #{createdBy,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="createdDt != null">
+				created_dt = #{createdDt,jdbcType=TIMESTAMP}, 
+			</if>
+	    	<if test="updatedBy != null">
+				updated_by = #{updatedBy,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="updatedDt != null">
+				updated_dt = #{updatedDt,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+    	where 
+		id = #{id,jdbcType=INTEGER} 
+		
+	</update>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		SELECT * FROM sk_upload ORDER BY 
+			id
+		 ASC
+	</select>
+
+	<select id="selectTotalCount" resultType="java.lang.Integer">
+		select count(1) from  sk_upload
+	</select>
+
+</mapper>

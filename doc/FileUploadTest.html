@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文件上传下载</title>
+</head>
+<body>
+	
+	<form id="upload" action="http://127.0.0.1:8080/api/upload"
+		method="post" enctype="multipart/form-data">
+		<strong>本地 upload 文件上传</strong><br />
+		请求code requestCode：<input type="text" name="requestCode" value=""><br />
+		请求人 invokerName：<input type="text" name="invokerName" value=""><br />
+		请求系统 sysName：<input type="text" name="sysName" value=""><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		是否使用别名URL：<input type="text" name="useAlias" value="false"><br />
+		图片 file：<input type="file" name="file"><br />
+		<input type="submit" value="提交"><br />
+	</form>
+	
+	<form id="queryProgress" action="http://127.0.0.1:8080/api/queryProgress"
+		method="post" enctype="multipart/form-data">
+		<strong>本地 queryProgress 图片上传进度</strong><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		<input type="submit" value="提交"><br />
+	</form>
+
+	<form id="imageUpload" action="http://127.0.0.1:8080/api/imageUpload"
+		method="post" enctype="multipart/form-data">
+		<strong>本地 imageUpload 图片上传</strong><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		是否使用别名URL：<input type="text" name="useAlias" value="false"><br />
+		图片 file：<input type="file" name="file"><br />
+		<input type="submit" value="提交"><br />
+	</form>
+	
+	<form id="imageCompressUpload" action="http://127.0.0.1:8080/api/imageCompressUpload"
+		method="post" enctype="multipart/form-data">
+		<strong>本地 imageCompressUpload 图片上传</strong><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		是否使用别名URL：<input type="text" name="useAlias" value="false"><br />
+		图片 file：<input type="file" name="file"><br />
+		<input type="submit" value="提交"><br /><br /><br />
+	</form>
+	
+	<form id="upload" action="http://10.166.15.230:28080/storekeeper/api/upload"
+		method="post" enctype="multipart/form-data">
+		<strong>15.230 upload 文件上传</strong><br />
+		请求code requestCode：<input type="text" name="requestCode" value=""><br />
+		请求人 invokerName：<input type="text" name="invokerName" value=""><br />
+		请求系统 sysName：<input type="text" name="sysName" value=""><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		是否使用别名URL：<input type="text" name="useAlias" value="false"><br />
+		图片 file：<input type="file" name="file"><br />
+		<input type="submit" value="提交"><br />
+	</form>
+	
+	<form id="queryProgress" action="http://10.166.15.230:28080/storekeeper/api/queryProgress"
+		method="post" enctype="multipart/form-data">
+		<strong>15.230 queryProgress 图片上传进度</strong><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		<input type="submit" value="提交"><br />
+	</form>
+	
+	<form id="imageUpload" action="http://10.166.15.230:28080/storekeeper/api/imageUpload"
+		method="post" enctype="multipart/form-data">
+		<strong>15.230 imageUpload 图片上传</strong><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		是否使用别名URL：<input type="text" name="useAlias" value="false"><br />
+		图片 file：<input type="file" name="file"><br />
+		<input type="submit" value="提交"><br />
+	</form>
+	
+	<form id="imageCompressUpload" action="http://10.166.15.230:28080/storekeeper/api/imageCompressUpload"
+		method="post" enctype="multipart/form-data">
+		<strong>15.230 imageCompressUpload 图片上传</strong><br />
+		唯一数 randomCode：<input type="text" name="randomCode" value=""><br />
+		是否使用别名URL：<input type="text" name="useAlias" value="false"><br />
+		图片 file：<input type="file" name="file"><br />
+		<input type="submit" value="提交"><br /><br /><br />
+	</form>
+
+</body>
+</html>

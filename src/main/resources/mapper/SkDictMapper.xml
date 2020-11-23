@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fosun.storekeeper.mapper.SkDictMapper" > 
+
+	<resultMap id="BaseResultMap" type="com.fosun.storekeeper.entity.SkDict" >
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="KEY1" property="key1" jdbcType="VARCHAR" />
+		<result column="VALUE1" property="value1" jdbcType="VARCHAR" />
+		<result column="KEY2" property="key2" jdbcType="VARCHAR" />
+		<result column="VALUE2" property="value2" jdbcType="VARCHAR" />
+		<result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+		<result column="START_DT" property="startDt" jdbcType="DATE" />
+		<result column="END_DT" property="endDt" jdbcType="DATE" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="FLAG" property="flag" jdbcType="CHAR" />
+		<result column="VERSION" property="version" jdbcType="VARCHAR" />
+		<result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+		<result column="CREATED_DT" property="createdDt" jdbcType="DATE" />
+		<result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+		<result column="UPDATED_DT" property="updatedDt" jdbcType="DATE" />
+  	</resultMap>
+  	
+  	<sql id="Base_Column_List" >
+  		ID, 
+		KEY1, 
+		VALUE1, 
+		KEY2, 
+		VALUE2, 
+		CATEGORY, 
+		START_DT, 
+		END_DT, 
+		MEMO, 
+		FLAG, 
+		VERSION, 
+		CREATED_BY, 
+		CREATED_DT, 
+		UPDATED_BY, 
+		UPDATED_DT
+  	</sql>
+  	
+  	<insert id="insert" parameterType="com.fosun.storekeeper.entity.SkDict" >
+  		insert into sk_dict
+		(
+			<include refid="Base_Column_List" />
+		)
+		values
+		(
+  			#{id,jdbcType=INTEGER}, 
+			#{key1,jdbcType=VARCHAR}, 
+			#{value1,jdbcType=VARCHAR}, 
+			#{key2,jdbcType=VARCHAR}, 
+			#{value2,jdbcType=VARCHAR}, 
+			#{category,jdbcType=VARCHAR}, 
+			#{startDt,jdbcType=DATE}, 
+			#{endDt,jdbcType=DATE}, 
+			#{memo,jdbcType=VARCHAR}, 
+			#{flag,jdbcType=CHAR}, 
+			#{version,jdbcType=VARCHAR}, 
+			#{createdBy,jdbcType=VARCHAR}, 
+			#{createdDt,jdbcType=DATE}, 
+			#{updatedBy,jdbcType=VARCHAR}, 
+			#{updatedDt,jdbcType=DATE}
+		)
+  	</insert>
+  	
+  	<delete id="deleteByPrimaryKey" >
+    	delete 
+    	from sk_dict
+    	where 
+  		ID = #{id,jdbcType=INTEGER} 
+		
+  	</delete>
+  	
+  	<select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+    	select 
+    	<include refid="Base_Column_List" />
+    	from sk_dict
+    	where 
+    	ID = #{id,jdbcType=INTEGER} 
+		
+  	</select>
+  	
+  	<update id="updateByPrimaryKey" parameterType="com.fosun.storekeeper.entity.SkDict" >
+    	update sk_dict
+    	<set>
+	    	<if test="key1 != null">
+				KEY1 = #{key1,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="value1 != null">
+				VALUE1 = #{value1,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="key2 != null">
+				KEY2 = #{key2,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="value2 != null">
+				VALUE2 = #{value2,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="category != null">
+				CATEGORY = #{category,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="startDt != null">
+				START_DT = #{startDt,jdbcType=DATE}, 
+			</if>
+	    	<if test="endDt != null">
+				END_DT = #{endDt,jdbcType=DATE}, 
+			</if>
+	    	<if test="memo != null">
+				MEMO = #{memo,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="flag != null">
+				FLAG = #{flag,jdbcType=CHAR}, 
+			</if>
+	    	<if test="version != null">
+				VERSION = #{version,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="createdBy != null">
+				CREATED_BY = #{createdBy,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="createdDt != null">
+				CREATED_DT = #{createdDt,jdbcType=DATE}, 
+			</if>
+	    	<if test="updatedBy != null">
+				UPDATED_BY = #{updatedBy,jdbcType=VARCHAR}, 
+			</if>
+	    	<if test="updatedDt != null">
+				UPDATED_DT = #{updatedDt,jdbcType=DATE}
+			</if>
+		</set>
+    	where 
+		ID = #{id,jdbcType=INTEGER} 
+		
+	</update>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		SELECT * FROM sk_dict ORDER BY 
+			ID
+		 ASC
+	</select>
+
+	<select id="selectTotalCount" resultType="java.lang.Integer">
+		select count(1) from  sk_dict
+	</select>
+
+</mapper>
