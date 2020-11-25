@@ -1,11 +1,23 @@
-# Maven #
-target/
-out/
-# IDEA #
-.idea/
-*.iml
-
-# Eclipse #
-.settings/
+# Eclipse
 .classpath
 .project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+**/out
+**/overlays/**
+rebel.xml
+
+# Mac
+.DS_Store
+
+# Maven
+**/log/
+**/target
+**/*.log
+**/tmp
+**/.tmp
+**/bin/**
